@@ -32,23 +32,42 @@ class Api::V1::BooksController < ApplicationController
       render json: book, status: 200
     else
       render json: {error: "Book not found."}
+    end
   end
 
   # This method looks up a book by the id, if it is found delete it.
   # Otherwise we render an error object.
   def destroy
-    book = retrieve_book
-    if book
+    if retrieve_book
       retrieve_book.destroy!
       head :no_content
     else 
       render json: {error: "Book cannot be deleted as its not found."}
+    end
+  end
+
+  # This method looks up a book by the id, if it is found update it.
+  # Otherwise we render an error object.
+  def update
+    book_params.require(%i[publisher title author_last_name author_first_name price])
+    if retrieve_book
+      retrieve_book.update(
+        publisher: book_params[:publisher],
+        title: book_params[:title],
+        author_last_name: book_params[:author_last_name],
+        author_first_name: book_params[:author_first_name],
+        price: book_params[:price]
+      )
+      head :no_content
+    else 
+      render json: {error: "Book cannot be updated as its not found."}
+    end
   end
 
   private
-    # Private: Retrieve policy text for requested tenant by it's id.
+    # Private: Retrieve book for requested book by it's id.
     def retrieve_book
-      Book.find_by!(id: params[:id])
+      Book.find_by(id: params[:id])
     end
 
     def book_params
