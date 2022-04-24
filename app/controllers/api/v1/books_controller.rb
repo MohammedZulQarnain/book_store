@@ -1,4 +1,24 @@
-class Api::V1::BooksController < ApplicationController
+class Api::V1::BooksController < ApplicationController 
+  #method to return total price of all the books.
+  def total_price_of_all_books
+    books = Book.all
+    total_price = books.map(&:price).sum
+    render json: total_price, status: 200
+  end
+
+  # method to return a sorted list of books by Author (last, first), then title.
+  def sorted_books_author
+    books = Book.all
+    books = books.sort_by { |b| [b.author_last_name.downcase, b.author_first_name.downcase, b.title.downcase]}
+    render json: books, status: 200
+  end
+
+  # method to return a sorted list of books by Publisher, Author (last, first), then title.
+  def sorted_books_publisher
+    books = Book.all
+    books = books.sort_by { |b| [b.publisher.downcase, b.author_last_name.downcase, b.author_first_name.downcase, b.title.downcase]}
+    render json: books, status: 200
+  end
 
   # index renders all books in the books table
   def index
