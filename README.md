@@ -10,7 +10,7 @@ Things you may want to cover:
 * System dependencies 
 - Ruby installed 
 - Bundler gem install
-- PostgreSql (make sure db server is running by running)
+- PostgreSql (make sure db server is running)
 
 * Configuration
 Run `bundle install` to install the required packages
