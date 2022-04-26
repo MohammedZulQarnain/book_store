@@ -12,8 +12,6 @@
 
 4.	Write stored procedures for steps 1 and 2, and use them in separate API methods to return the same results.
 - Sol: Stored procedure created for 
-    Run `rails db`
-    create procedures as follows and Run `CALL sort_book_publisher` 
     1. `CREATE OR REPLACE PROCEDURE public.sort_book_publisher()
         LANGUAGE sql
         AS $procedure$
