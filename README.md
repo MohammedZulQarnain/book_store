@@ -2,8 +2,6 @@
 
 A simple Rails 6.1 API-only backend for a bookstore service (Ruby 2.7.2, PostgreSQL).
 
-Status: Backend scaffold — models/jobs/mailers are present but no resource routes/controllers are implemented yet. Ready for endpoint development.
-
 Quickstart (development)
 
 Prerequisites: Ruby 2.7.2, Bundler, PostgreSQL.
@@ -42,14 +40,4 @@ Example curl (after adding routes/controllers)
 curl -X GET http://localhost:3000/books
 ```
 
-What I added
-
-- Quickstart steps and status
-- CI workflow and OpenAPI + curl examples in the repo
-
-Next suggested steps before a client demo
-
-- Add a short API surface (e.g. Books CRUD controller + routes)
-- Provide a Postman collection or OpenAPI-driven mock server
-- Add a LICENSE and CI (tests/lint) — already added in this commit
 
